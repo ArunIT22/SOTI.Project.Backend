@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOTI.Project.DAL", "SOTI.Project.DAL\SOTI.Project.DAL.csproj", "{C12ADF05-55DB-4AA8-A4CA-C04754AE6F70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOTI.Project.API", "SOTI.Project.API\SOTI.Project.API.csproj", "{8F3FFDC0-BA7B-4600-BAEB-F4FDBB1CFD76}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C12ADF05-55DB-4AA8-A4CA-C04754AE6F70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C12ADF05-55DB-4AA8-A4CA-C04754AE6F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C12ADF05-55DB-4AA8-A4CA-C04754AE6F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C12ADF05-55DB-4AA8-A4CA-C04754AE6F70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F3FFDC0-BA7B-4600-BAEB-F4FDBB1CFD76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F3FFDC0-BA7B-4600-BAEB-F4FDBB1CFD76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F3FFDC0-BA7B-4600-BAEB-F4FDBB1CFD76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F3FFDC0-BA7B-4600-BAEB-F4FDBB1CFD76}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8AAFB4C7-24BE-4557-B207-DE3274FB6BA5}
+	EndGlobalSection
+EndGlobal
