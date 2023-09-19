@@ -21,7 +21,7 @@ namespace SOTI.Project.API.Controllers
         [Route("Login")]
         public async Task<IHttpActionResult> Login([FromBody] User user)
         {
-            var result = await _account.ValidateUser(user.Username, user.Password);
+            var result = await _account.ValidateUserAsync(user.Username, user.Password);
             if(result == null)
             {
                 return NotFound();

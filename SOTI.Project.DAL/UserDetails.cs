@@ -9,7 +9,7 @@ namespace SOTI.Project.DAL
 {
     public class UserDetails : IAccount
     {
-        public Task<User> ValidateUser(string username, string password)
+        public Task<User> ValidateUserAsync(string username, string password)
         {
             return Task.Run(() =>
             {

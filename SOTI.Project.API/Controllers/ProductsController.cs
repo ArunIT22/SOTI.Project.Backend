@@ -28,7 +28,7 @@ namespace SOTI.Project.API.Controllers
 
         [HttpGet]
         [Route("AllProducts")]
-        [BasicAuthentication]
+        [AllowAnonymous]
         public IHttpActionResult GetProducts()
         {
             var dt = _product.GetAllProduct();
@@ -41,7 +41,7 @@ namespace SOTI.Project.API.Controllers
 
         [HttpGet]
         [Route("{productId}", Name = "ById")]
-        [BasicAuthentication]
+        [AllowAnonymous]
         public IHttpActionResult GetProductById([FromUri] int productId)
         {
             var row = _product.GetProductById(productId);
@@ -89,6 +89,7 @@ namespace SOTI.Project.API.Controllers
 
         [HttpPost]
         [Route("AddProduct")]
+        [Authorize(Roles ="admin, employee")]
         public IHttpActionResult AddProduct(Product product)
         {
             var result = _product.AddProduct(product.ProductName, product.UnitPrice.Value, product.UnitsInStock.Value);
@@ -116,6 +117,7 @@ namespace SOTI.Project.API.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles ="admin")]
         public IHttpActionResult DeleteProduct([FromUri] int id)
         {
             var result = _product.DeleteProduct(id);

@@ -5,6 +5,6 @@ namespace SOTI.Project.DAL.Interfaces
 {
     public interface IAccount
     {
-        Task<User> ValidateUser(string username, string password);
+        Task<User> ValidateUserAsync(string username, string password);
     }
 }

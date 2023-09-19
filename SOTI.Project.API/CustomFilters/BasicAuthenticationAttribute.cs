@@ -23,7 +23,7 @@ namespace SOTI.Project.API.CustomFilters
 
         public async Task<User> IsValidUser(string emailId, string password)
         {
-            return await _userDetails.ValidateUser(emailId, password);
+            return await _userDetails.ValidateUserAsync(emailId, password);
         }
 
         public async Task AuthenticateAsync(HttpAuthenticationContext context, CancellationToken cancellationToken)
