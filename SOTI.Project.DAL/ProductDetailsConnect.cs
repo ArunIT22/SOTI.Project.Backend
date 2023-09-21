@@ -78,7 +78,7 @@ namespace SOTI.Project.DAL
             return product;
         }
 
-        public bool AddProduct(string productName, decimal? unitPrice, short? unitsInStock)
+        public bool AddProduct(Product product)
         {
             using (_connection = new SqlConnection(SqlConnectionStrings.GetConnectionString))
             {
@@ -95,9 +95,9 @@ namespace SOTI.Project.DAL
                     _command.Parameters.Add(new SqlParameter("@UnitsInStock", SqlDbType.SmallInt, 2));
 
                     //Value for the Stored Procedure Parameters
-                    _command.Parameters["@ProductName"].Value = productName;
-                    _command.Parameters["@UnitPrice"].Value = unitPrice.Value;
-                    _command.Parameters["@UnitsInStock"].Value = unitsInStock.Value;
+                    _command.Parameters["@ProductName"].Value = product.ProductName;
+                    _command.Parameters["@UnitPrice"].Value = product.UnitPrice.Value;
+                    _command.Parameters["@UnitsInStock"].Value = product.UnitsInStock.Value;
 
                     //Execute the Command
                     var res = _command.ExecuteNonQuery();

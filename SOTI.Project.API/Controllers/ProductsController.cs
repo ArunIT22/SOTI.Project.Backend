@@ -12,9 +12,9 @@ using System.Web.Http.Results;
 
 namespace SOTI.Project.API.Controllers
 {
-    [EnableCors(origins:"*", headers:"*", methods:"*")]
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     [RoutePrefix("api/SOTI/Products")]
-    // [BasicAuthentication]
+    [BasicAuthentication]
     public class ProductsController : ApiController
     {
         private readonly IProduct _product = null;
@@ -28,15 +28,23 @@ namespace SOTI.Project.API.Controllers
 
         [HttpGet]
         [Route("AllProducts")]
-        [AllowAnonymous]
+        // [AllowAnonymous]
+        [Authorize(Roles = "admin")]
         public IHttpActionResult GetProducts()
         {
-            var dt = _product.GetAllProduct();
-            if (dt == null)
+            try
             {
-                return BadRequest();
+                var dt = _product.GetAllProduct();
+                if (dt == null)
+                {
+                    return BadRequest();
+                }
+                return Ok(dt);
             }
-            return Ok(dt);
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);  
+            }
         }
 
         [HttpGet]
@@ -89,16 +97,16 @@ namespace SOTI.Project.API.Controllers
 
         [HttpPost]
         [Route("AddProduct")]
-        [Authorize(Roles ="admin, employee")]
+        [Authorize(Roles = "admin, employee")]
         public IHttpActionResult AddProduct(Product product)
         {
-            var result = _product.AddProduct(product.ProductName, product.UnitPrice.Value, product.UnitsInStock.Value);
+            var result = _product.AddProduct(product);
             if (result)
             {
                 return Created("api/SOTI/Products/" + product.ProductId, product);
                 //return CreatedAtRoute("ById", new { productId = product.ProductId }, product);
             }
-            return BadRequest();
+            return BadRequest("No Record Exists");
         }
 
         [HttpPut]
@@ -117,7 +125,7 @@ namespace SOTI.Project.API.Controllers
         }
 
         [HttpDelete]
-        [Authorize(Roles ="admin")]
+        [Authorize(Roles = "admin")]
         public IHttpActionResult DeleteProduct([FromUri] int id)
         {
             var result = _product.DeleteProduct(id);

@@ -9,7 +9,7 @@ namespace SOTI.Project.DAL
 
         Product GetProductById(int id);
 
-        bool AddProduct(string productName, decimal? unitPrice, short? unitsInStock);
+        bool AddProduct(Product product);
 
         bool DeleteProduct(int id);
 

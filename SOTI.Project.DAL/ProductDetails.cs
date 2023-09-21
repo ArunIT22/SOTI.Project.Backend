@@ -54,7 +54,7 @@ namespace SOTI.Project.DAL
             return product;
         }
 
-        public bool AddProduct(string productName, decimal? unitPrice, short? unitsInStock)
+        public bool AddProduct(Product product)
         {
             using (con = new SqlConnection(SqlConnectionStrings.GetConnectionString))
             {
@@ -66,9 +66,9 @@ namespace SOTI.Project.DAL
                         SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
                         adapter.InsertCommand = builder.GetInsertCommand();
                         DataRow dr = ds.Tables["Products"].NewRow();
-                        dr["ProductName"] = productName;
-                        dr["UnitPrice"] = unitPrice;
-                        dr["UnitsInStock"] = unitsInStock;
+                        dr["ProductName"] = product.ProductName;
+                        dr["UnitPrice"] = product.UnitPrice;
+                        dr["UnitsInStock"] = product.UnitsInStock;
                         ds.Tables["Products"].Rows.Add(dr);
                         //Update to Database
                         var res = adapter.Update(ds, "Products");
